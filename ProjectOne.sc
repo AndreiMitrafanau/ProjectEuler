@@ -12,6 +12,4 @@ def check(list: List[Int]): Int = {
     case Nil => 0
   }
 }
-
 check(range)
-1
