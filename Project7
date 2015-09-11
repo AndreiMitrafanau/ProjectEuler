@@ -1,0 +1,25 @@
+import scala.annotation.tailrec
+
+/**
+ * By listing the first six prime numbers:
+ * 2, 3, 5, 7, 11, and 13, we can see that
+ * the 6th prime is 13. What is the 10 001st
+ * prime number?
+ */
+@tailrec
+def findPrime(a: Int = 0, i: Int = 0): Int = {
+  if (i == 10001) a - 1
+  else a match {
+    case x if isPrime(a) => findPrime(a + 1, i + 1)
+    case x if !isPrime(a) => findPrime(a + 1, i)
+    case _ => a
+  }
+}
+
+def isPrime(i: Int): Boolean = {
+  if (i <= 1) false
+  else if (i == 2) true
+  else !(2 to (i - 1)).exists(x => i % x == 0)
+}
+
+findPrime()
